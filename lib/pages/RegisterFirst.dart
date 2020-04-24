@@ -14,20 +14,18 @@ class RegisterFirstPage extends StatefulWidget {
 }
 
 class _RegisterFirstPageState extends State<RegisterFirstPage> {
-  String tel="";
+  String tel = "";
+
   sendCode() async {
     RegExp reg = new RegExp(r"^1\d{10}$");
     if (reg.hasMatch(this.tel)) {
       var api = '${Config.domain}api/sendCode';
       var response = await Dio().post(api, data: {"tel": this.tel});
       if (response.data["success"]) {
+        print(response); //演示期间服务器直接返回  给手机发送的验证码
 
-        print(response);  //演示期间服务器直接返回  给手机发送的验证码
-
-        Navigator.pushNamed(context, '/registerSecond',arguments: {
-          "tel":this.tel
-        });
-        
+        Navigator.pushNamed(context, '/registerSecond',
+            arguments: {"tel": this.tel});
       } else {
         Fluttertoast.showToast(
           msg: '${response.data["message"]}',

@@ -18,7 +18,6 @@ class _CategoryPageState extends State<CategoryPage>
   List _rightCateList = [];
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
   @override

@@ -5,33 +5,30 @@ import '../../model/ProductContentModel.dart';
 
 class CartNum extends StatefulWidget {
   ProductContentitem _productContent;
-  
-  CartNum(this._productContent,{Key key}) : super(key: key);
+
+  CartNum(this._productContent, {Key key}) : super(key: key);
 
   _CartNumState createState() => _CartNumState();
 }
 
 class _CartNumState extends State<CartNum> {
   ProductContentitem _productContent;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    this._productContent=widget._productContent;
+    this._productContent = widget._productContent;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: ScreenAdapter.width(168),
-      decoration:
-          BoxDecoration(border: Border.all(width: ScreenAdapter.width(2), color: Colors.black12)),
+      decoration: BoxDecoration(
+          border:
+              Border.all(width: ScreenAdapter.width(2), color: Colors.black12)),
       child: Row(
-        children: <Widget>[
-          _leftBtn(),
-          _centerArea(),
-          _rightBtn()
-        ],
+        children: <Widget>[_leftBtn(), _centerArea(), _rightBtn()],
       ),
     );
   }
@@ -41,9 +38,9 @@ class _CartNumState extends State<CartNum> {
   Widget _leftBtn() {
     return InkWell(
       onTap: () {
-        if( this._productContent.count>1){
+        if (this._productContent.count > 1) {
           setState(() {
-            this._productContent.count=this._productContent.count-1; 
+            this._productContent.count = this._productContent.count - 1;
           });
         }
       },
@@ -59,11 +56,10 @@ class _CartNumState extends State<CartNum> {
   //右侧按钮
   Widget _rightBtn() {
     return InkWell(
-      onTap: (){
-
-          setState(() {
-            this._productContent.count=this._productContent.count+1; 
-          });
+      onTap: () {
+        setState(() {
+          this._productContent.count = this._productContent.count + 1;
+        });
       },
       child: Container(
         alignment: Alignment.center,

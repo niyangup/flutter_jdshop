@@ -33,15 +33,18 @@ final routes = {
   '/cart': (context) => CartPage(),
   '/login': (context) => LoginPage(),
   '/registerFirst': (context) => RegisterFirstPage(),
-  '/registerSecond': (context,{arguments}) => RegisterSecondPage(arguments: arguments),
-  '/registerThird': (context,{arguments}) => RegisterThirdPage(arguments: arguments),
+  '/registerSecond': (context, {arguments}) =>
+      RegisterSecondPage(arguments: arguments),
+  '/registerThird': (context, {arguments}) =>
+      RegisterThirdPage(arguments: arguments),
   '/productList': (context, {arguments}) =>
       ProductListPage(arguments: arguments),
   '/productContent': (context, {arguments}) =>
       ProductContentPage(arguments: arguments),
   '/checkOut': (context) => CheckOutPage(),
   '/addressAdd': (context) => AddressAddPage(),
-  '/addressEdit': (context,{arguments}) => AddressEditPage(arguments: arguments),
+  '/addressEdit': (context, {arguments}) =>
+      AddressEditPage(arguments: arguments),
   '/addressList': (context) => AddressListPage(),
   '/pay': (context) => PayPage(),
   '/order': (context) => OrderPage(),

@@ -6,7 +6,8 @@ import '../../provider/Cart.dart';
 
 class CartNum extends StatefulWidget {
   Map _itemData;
-  CartNum(this._itemData,{Key key}) : super(key: key);
+
+  CartNum(this._itemData, {Key key}) : super(key: key);
 
   _CartNumState createState() => _CartNumState();
 }
@@ -14,25 +15,21 @@ class CartNum extends StatefulWidget {
 class _CartNumState extends State<CartNum> {
   Map _itemData;
   var cartProvider;
-  
+
   @override
   Widget build(BuildContext context) {
-
     //注意
-    this._itemData=widget._itemData;
+    this._itemData = widget._itemData;
 
     this.cartProvider = Provider.of<Cart>(context);
 
     return Container(
       width: ScreenAdapter.width(168),
-      decoration:
-          BoxDecoration(border: Border.all(width: ScreenAdapter.width(2), color: Colors.black12)),
+      decoration: BoxDecoration(
+          border:
+              Border.all(width: ScreenAdapter.width(2), color: Colors.black12)),
       child: Row(
-        children: <Widget>[
-          _leftBtn(),
-          _centerArea(),
-          _rightBtn()
-        ],
+        children: <Widget>[_leftBtn(), _centerArea(), _rightBtn()],
       ),
     );
   }
@@ -42,9 +39,9 @@ class _CartNumState extends State<CartNum> {
   Widget _leftBtn() {
     return InkWell(
       onTap: () {
-        if(_itemData["count"]>1){
-           _itemData["count"]--;
-           this.cartProvider.itemCountChange();
+        if (_itemData["count"] > 1) {
+          _itemData["count"]--;
+          this.cartProvider.itemCountChange();
         }
       },
       child: Container(
@@ -59,9 +56,9 @@ class _CartNumState extends State<CartNum> {
   //右侧按钮
   Widget _rightBtn() {
     return InkWell(
-      onTap: (){
-           _itemData["count"]++;
-          this.cartProvider.itemCountChange();
+      onTap: () {
+        _itemData["count"]++;
+        this.cartProvider.itemCountChange();
       },
       child: Container(
         alignment: Alignment.center,

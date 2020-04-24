@@ -15,6 +15,7 @@ import '../pages/tabs/Tabs.dart';
 
 class RegisterThirdPage extends StatefulWidget {
   Map arguments;
+
   RegisterThirdPage({Key key, this.arguments}) : super(key: key);
 
   _RegisterThirdPageState createState() => _RegisterThirdPageState();
@@ -23,8 +24,9 @@ class RegisterThirdPage extends StatefulWidget {
 class _RegisterThirdPageState extends State<RegisterThirdPage> {
   String tel;
   String code;
-  String password='';
-  String rpassword='';
+  String password = '';
+  String rpassword = '';
+
   @override
   void initState() {
     // TODO: implement initState
@@ -32,6 +34,7 @@ class _RegisterThirdPageState extends State<RegisterThirdPage> {
     this.tel = widget.arguments["tel"];
     this.code = widget.arguments["code"];
   }
+
   //注册
   doRegister() async {
     if (password.length < 6) {
@@ -54,7 +57,7 @@ class _RegisterThirdPageState extends State<RegisterThirdPage> {
         "password": this.password
       });
       if (response.data["success"]) {
-        //保存用户信息   
+        //保存用户信息
         Storage.setString('userInfo', json.encode(response.data["userinfo"]));
 
         //返回到根
@@ -86,7 +89,7 @@ class _RegisterThirdPageState extends State<RegisterThirdPage> {
               text: "请输入密码",
               password: true,
               onChanged: (value) {
-                this.password=value;
+                this.password = value;
               },
             ),
             SizedBox(height: 10),
@@ -94,7 +97,7 @@ class _RegisterThirdPageState extends State<RegisterThirdPage> {
               text: "请输入确认密码",
               password: true,
               onChanged: (value) {
-                this.rpassword=value;
+                this.rpassword = value;
               },
             ),
             SizedBox(height: 20),

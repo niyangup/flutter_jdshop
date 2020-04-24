@@ -29,7 +29,8 @@ class CateItemModel {
   String pid;
   String sort;
 
-  CateItemModel({this.sId, this.title, this.status, this.pic, this.pid, this.sort});
+  CateItemModel(
+      {this.sId, this.title, this.status, this.pic, this.pid, this.sort});
 
   CateItemModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];

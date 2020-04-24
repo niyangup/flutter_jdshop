@@ -6,21 +6,20 @@ class ProductContentThird extends StatefulWidget {
   _ProductContentThirdState createState() => _ProductContentThirdState();
 }
 
-class _ProductContentThirdState extends State<ProductContentThird>  with AutomaticKeepAliveClientMixin{
-  
+class _ProductContentThirdState extends State<ProductContentThird>
+    with AutomaticKeepAliveClientMixin {
   bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: ListView.builder(
-         itemCount: 30,
-         itemBuilder: (context,index){
-           return ListTile(
-             title: Text("第${index}条"),
-           );
-
-         },
-       )
-    );
+        child: ListView.builder(
+      itemCount: 30,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text("第${index}条"),
+        );
+      },
+    ));
   }
 }

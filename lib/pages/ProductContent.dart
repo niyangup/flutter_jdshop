@@ -24,6 +24,7 @@ import '../services/EventBus.dart';
 
 class ProductContentPage extends StatefulWidget {
   final Map arguments;
+
   ProductContentPage({Key key, this.arguments}) : super(key: key);
 
   _ProductContentPageState createState() => _ProductContentPageState();
@@ -34,9 +35,7 @@ class _ProductContentPageState extends State<ProductContentPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // print(this._productContentData.sId);
 
     this._getContentData();
   }
@@ -135,16 +134,17 @@ class _ProductContentPageState extends State<ProductContentPage> {
                               Navigator.pushNamed(context, '/cart');
                             },
                             child: Container(
-                              padding: EdgeInsets.only(
-                                  top: ScreenAdapter.height(4)),
+                              padding:
+                                  EdgeInsets.only(top: ScreenAdapter.height(4)),
                               width: ScreenAdapter.size(120),
                               height: ScreenAdapter.height(84),
                               child: Column(
                                 children: <Widget>[
-                                  Icon(Icons.shopping_cart,size: ScreenAdapter.size(36)),
-                                  Text("购物车",style: TextStyle(
-                                    fontSize:ScreenAdapter.size(22)
-                                  ))
+                                  Icon(Icons.shopping_cart,
+                                      size: ScreenAdapter.size(36)),
+                                  Text("购物车",
+                                      style: TextStyle(
+                                          fontSize: ScreenAdapter.size(22)))
                                 ],
                               ),
                             ),
@@ -166,8 +166,10 @@ class _ProductContentPageState extends State<ProductContentPage> {
                                   //调用Provider 更新数据
                                   cartProvider.updateCartList();
                                   Fluttertoast.showToast(
-                                      msg: '加入购物车成功',
-                                      toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER,);
+                                    msg: '加入购物车成功',
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.CENTER,
+                                  );
                                 }
                               },
                             ),

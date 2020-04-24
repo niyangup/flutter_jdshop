@@ -11,6 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterSecondPage extends StatefulWidget {
   Map arguments;
+
   RegisterSecondPage({Key key, this.arguments}) : super(key: key);
 
   _RegisterSecondPageState createState() => _RegisterSecondPageState();
@@ -24,7 +25,6 @@ class _RegisterSecondPageState extends State<RegisterSecondPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     this.tel = widget.arguments['tel'];
     this._showTimer();
@@ -59,6 +59,7 @@ class _RegisterSecondPageState extends State<RegisterSecondPage> {
       print(response); //演示期间服务器直接返回  给手机发送的验证码
     }
   }
+
   //验证验证码
 
   validateCode() async {
@@ -66,10 +67,8 @@ class _RegisterSecondPageState extends State<RegisterSecondPage> {
     var response =
         await Dio().post(api, data: {"tel": this.tel, "code": this.code});
     if (response.data["success"]) {
-      Navigator.pushNamed(context, '/registerThird',arguments: {
-        "tel":this.tel,
-        "code":this.code
-      });
+      Navigator.pushNamed(context, '/registerThird',
+          arguments: {"tel": this.tel, "code": this.code});
     } else {
       Fluttertoast.showToast(
         msg: '${response.data["message"]}',

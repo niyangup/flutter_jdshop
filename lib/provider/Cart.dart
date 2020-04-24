@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
+
+import 'package:flutter/material.dart';
+
 import '../services/Storage.dart';
 
 class Cart with ChangeNotifier {
@@ -8,12 +10,15 @@ class Cart with ChangeNotifier {
   double _allPrice = 0; //总价
 
   List get cartList => this._cartList;
+
   bool get isCheckedAll => this._isCheckedAll;
+
   double get allPrice => this._allPrice;
 
   Cart() {
     this.init();
   }
+
   //初始化的时候获取购物车数据
   init() async {
     try {
@@ -26,7 +31,7 @@ class Cart with ChangeNotifier {
     this._isCheckedAll = this.isCheckAll();
     //计算总价
     this.computeAllPrice();
-    
+
     notifyListeners();
   }
 
@@ -38,7 +43,7 @@ class Cart with ChangeNotifier {
     Storage.setString("cartList", json.encode(this._cartList));
     //计算总价
     this.computeAllPrice();
-    
+
     notifyListeners();
   }
 
@@ -50,7 +55,7 @@ class Cart with ChangeNotifier {
     this._isCheckedAll = value;
     //计算总价
     this.computeAllPrice();
-    
+
     Storage.setString("cartList", json.encode(this._cartList));
     notifyListeners();
   }
@@ -75,7 +80,7 @@ class Cart with ChangeNotifier {
     } else {
       this._isCheckedAll = false;
     }
-     //计算总价
+    //计算总价
     this.computeAllPrice();
 
     Storage.setString("cartList", json.encode(this._cartList));
@@ -93,24 +98,16 @@ class Cart with ChangeNotifier {
     this._allPrice = tempAllPrice;
     notifyListeners();
   }
+
   //删除数据
   removeItem() {
-              //  1        2
-    // ['1111','2222','333333333','4444444444']
-    // 错误的写法 
-    // for (var i = 0; i < this._cartList.length; i++) {
-    //   if (this._cartList[i]["checked"] == true) {
-    //      this._cartList.removeAt(i);
-    //   }
-    // }
-
-    List tempList=[];
+    List tempList = [];
     for (var i = 0; i < this._cartList.length; i++) {
       if (this._cartList[i]["checked"] == false) {
-         tempList.add(this._cartList[i]);
+        tempList.add(this._cartList[i]);
       }
     }
-    this._cartList=tempList;
+    this._cartList = tempList;
     //计算总价
     this.computeAllPrice();
     Storage.setString("cartList", json.encode(this._cartList));

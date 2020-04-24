@@ -41,8 +41,9 @@ class SearchServices {
       await Storage.setString('searchList', json.encode(tempList));
     }
   }
-  static getHistoryList() async{
-     try {
+
+  static getHistoryList() async {
+    try {
       List searchListData = json.decode(await Storage.getString('searchList'));
       return searchListData;
     } catch (e) {
@@ -50,13 +51,13 @@ class SearchServices {
     }
   }
 
-  static clearHistoryList() async{    
-      await Storage.remove('searchList');
-  }
-  static removeHistoryData(keywords) async{    
-      List searchListData = json.decode(await Storage.getString('searchList'));
-      searchListData.remove(keywords);
-      await Storage.setString('searchList', json.encode(searchListData));
+  static clearHistoryList() async {
+    await Storage.remove('searchList');
   }
 
+  static removeHistoryData(keywords) async {
+    List searchListData = json.decode(await Storage.getString('searchList'));
+    searchListData.remove(keywords);
+    await Storage.setString('searchList', json.encode(searchListData));
+  }
 }

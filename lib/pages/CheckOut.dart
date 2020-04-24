@@ -22,6 +22,7 @@ class CheckOutPage extends StatefulWidget {
 
 class _CheckOutPageState extends State<CheckOutPage> {
   List _addressList = [];
+
   @override
   void initState() {
     super.initState();

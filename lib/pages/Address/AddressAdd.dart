@@ -23,14 +23,13 @@ class AddressAddPage extends StatefulWidget {
 }
 
 class _AddressAddPageState extends State<AddressAddPage> {
-
-  String area='';
-  String name='';
-  String phone='';
-  String address='';
+  String area = '';
+  String name = '';
+  String phone = '';
+  String address = '';
 
   //监听页面销毁的事件
-  dispose(){
+  dispose() {
     super.dispose();
     eventBus.fire(new AddressEvent('增加成功...'));
     eventBus.fire(new CheckOutEvent('改收货地址成功...'));
@@ -49,15 +48,15 @@ class _AddressAddPageState extends State<AddressAddPage> {
               SizedBox(height: 20),
               JdText(
                 text: "收货人姓名",
-                onChanged: (value){
-                  this.name=value;
+                onChanged: (value) {
+                  this.name = value;
                 },
               ),
               SizedBox(height: 10),
               JdText(
                 text: "收货人电话",
-                onChanged: (value){
-                  this.phone=value;
+                onChanged: (value) {
+                  this.phone = value;
                 },
               ),
               SizedBox(height: 10),
@@ -71,21 +70,25 @@ class _AddressAddPageState extends State<AddressAddPage> {
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.add_location),
-                      this.area.length>0?Text('${this.area}', style: TextStyle(color: Colors.black54)):Text('省/市/区', style: TextStyle(color: Colors.black54))
+                      this.area.length > 0
+                          ? Text('${this.area}',
+                              style: TextStyle(color: Colors.black54))
+                          : Text('省/市/区',
+                              style: TextStyle(color: Colors.black54))
                     ],
                   ),
-                  onTap: () async{
+                  onTap: () async {
                     Result result = await CityPickers.showCityPicker(
                         context: context,
                         cancelWidget:
                             Text("取消", style: TextStyle(color: Colors.blue)),
                         confirmWidget:
-                            Text("确定", style: TextStyle(color: Colors.blue))
-                    );
+                            Text("确定", style: TextStyle(color: Colors.blue)));
 
                     print(result);
                     setState(() {
-                     this.area= "${result.provinceName}/${result.cityName}/${result.areaName}";
+                      this.area =
+                          "${result.provinceName}/${result.cityName}/${result.areaName}";
                     });
                   },
                 ),
@@ -95,48 +98,46 @@ class _AddressAddPageState extends State<AddressAddPage> {
                 text: "详细地址",
                 maxLines: 4,
                 height: 200,
-                onChanged: (value){
-                  this.address="${this.area} ${value}";
+                onChanged: (value) {
+                  this.address = "${this.area} ${value}";
                 },
               ),
               SizedBox(height: 10),
               SizedBox(height: 40),
-              JdButton(text: "增加", color: Colors.red,cb: () async{
+              JdButton(
+                  text: "增加",
+                  color: Colors.red,
+                  cb: () async {
+                    List userinfo = await UserServices.getUserInfo();
 
-                  List userinfo=await UserServices.getUserInfo();
+                    print(userinfo);
 
-                  print(userinfo);
+                    // print('1234');
+                    var tempJson = {
+                      "uid": userinfo[0]["_id"],
+                      "name": this.name,
+                      "phone": this.phone,
+                      "address": this.address,
+                      "salt": userinfo[0]["salt"]
+                    };
 
+                    var sign = SignServices.getSign(tempJson);
+                    // print(sign);
 
-                  // print('1234');
-                  var tempJson={
-                    "uid":userinfo[0]["_id"],
-                    "name":this.name,
-                    "phone":this.phone,
-                    "address":this.address,
-                    "salt":userinfo[0]["salt"]
-                  };
+                    var api = '${Config.domain}api/addAddress';
+                    var result = await Dio().post(api, data: {
+                      "uid": userinfo[0]["_id"],
+                      "name": this.name,
+                      "phone": this.phone,
+                      "address": this.address,
+                      "sign": sign
+                    });
 
-                  var sign=SignServices.getSign(tempJson);
-                  // print(sign);
+                    // if(result.data["success"]){
 
-                  var api = '${Config.domain}api/addAddress';
-                  var result = await Dio().post(api,data:{
-                      "uid":userinfo[0]["_id"],
-                      "name":this.name,
-                      "phone":this.phone,
-                      "address":this.address,
-                      "sign":sign
-                  });                   
-
-                  // if(result.data["success"]){
-                   
-                  // }
-                  Navigator.pop(context);
-
-
-
-              })
+                    // }
+                    Navigator.pop(context);
+                  })
             ],
           ),
         ));

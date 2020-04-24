@@ -19,6 +19,7 @@ class _CartPageState extends State<CartPage> {
   bool _isEdit = false;
 
   var checkOutProvider;
+
   @override
   void initState() {
     super.initState();
@@ -29,7 +30,7 @@ class _CartPageState extends State<CartPage> {
 
   doCheckOut() async {
     //1、获取购物车选中的数据
-    List checkOutData = await CartServices.getCheckOutData();  
+    List checkOutData = await CartServices.getCheckOutData();
     //2、保存购物车选中的数据
     this.checkOutProvider.changeCheckOutListData(checkOutData);
     //3、购物车有没有选中的数据

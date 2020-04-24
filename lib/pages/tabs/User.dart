@@ -20,7 +20,6 @@ class _UserPageState extends State<UserPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     this._getUserinfo();
 
@@ -102,7 +101,7 @@ class _UserPageState extends State<UserPage> {
         ListTile(
           leading: Icon(Icons.assignment, color: Colors.red),
           title: Text("全部订单"),
-          onTap: (){
+          onTap: () {
             Navigator.pushNamed(context, '/order');
           },
         ),

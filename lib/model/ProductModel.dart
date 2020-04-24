@@ -25,7 +25,7 @@ class ProductItemModel {
   String sId;
   String title;
   String cid;
-  Object price;   //所有的类型都继承 Object
+  Object price; //所有的类型都继承 Object
   String oldPrice;
   String pic;
   String sPic;

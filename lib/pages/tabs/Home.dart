@@ -7,7 +7,6 @@ import '../../config/Config.dart';
 import 'package:dio/dio.dart';
 // import '../../services/SignServices.dart';
 
-
 //轮播图类模型
 import '../../model/FocusModel.dart';
 
@@ -24,7 +23,6 @@ class _HomePageState extends State<HomePage>
   List _bestProductList = [];
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
   @override
@@ -108,6 +106,7 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
+
   //热门商品
 
   Widget _hotProductListWidget() {

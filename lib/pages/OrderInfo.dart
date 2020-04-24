@@ -68,9 +68,9 @@ class _OrderInfoPageState extends State<OrderInfoPage> {
                                     style: TextStyle(color: Colors.black54)),
                                 ListTile(
                                   leading: Text("￥100",
-                                          style: TextStyle(color: Colors.red)),
+                                      style: TextStyle(color: Colors.red)),
                                   trailing: Text("x2"),
-                                )                               
+                                )
                               ],
                             ),
                           ))
@@ -101,9 +101,9 @@ class _OrderInfoPageState extends State<OrderInfoPage> {
                                     style: TextStyle(color: Colors.black54)),
                                 ListTile(
                                   leading: Text("￥100",
-                                          style: TextStyle(color: Colors.red)),
+                                      style: TextStyle(color: Colors.red)),
                                   trailing: Text("x2"),
-                                )                               
+                                )
                               ],
                             ),
                           ))
@@ -114,48 +114,47 @@ class _OrderInfoPageState extends State<OrderInfoPage> {
             ),
 
             //详情信息
-             Container(
+            Container(
               color: Colors.white,
               margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Column(
-                children: <Widget>[               
-               
-                   ListTile(
+                children: <Widget>[
+                  ListTile(
                     title: Row(
                       children: <Widget>[
-                        Text("订单编号:",style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text("订单编号:",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                         Text("124215215xx324")
                       ],
                     ),
                   ),
-                
                   ListTile(
                     title: Row(
                       children: <Widget>[
-                        Text("下单日期:",style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text("下单日期:",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                         Text("2019-12-09")
                       ],
                     ),
                   ),
-                 
                   ListTile(
                     title: Row(
                       children: <Widget>[
-                        Text("支付方式:",style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text("支付方式:",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                         Text("微信支付")
                       ],
                     ),
                   ),
-                  
                   ListTile(
                     title: Row(
                       children: <Widget>[
-                        Text("配送方式:",style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text("配送方式:",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                         Text("顺丰")
                       ],
                     ),
                   )
-                 
                 ],
               ),
             ),
@@ -164,17 +163,15 @@ class _OrderInfoPageState extends State<OrderInfoPage> {
               color: Colors.white,
               margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Column(
-                children: <Widget>[               
-                   ListTile(
-                    title: Row(
-                      children: <Widget>[
-                        Text("总金额:",style: TextStyle(fontWeight: FontWeight.bold)),
-                        Text("￥414元",style: TextStyle(
-                          color: Colors.red
-                        ))
-                      ],
-                    )
-                  )          
+                children: <Widget>[
+                  ListTile(
+                      title: Row(
+                    children: <Widget>[
+                      Text("总金额:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text("￥414元", style: TextStyle(color: Colors.red))
+                    ],
+                  ))
                 ],
               ),
             )

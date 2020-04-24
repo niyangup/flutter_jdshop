@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         // ChangeNotifierProvider(builder: (_) => Counter()),
         ChangeNotifierProvider(builder: (_) => Cart()),
-        ChangeNotifierProvider(builder: (_) => CheckOut())             
+        ChangeNotifierProvider(builder: (_) => CheckOut())
       ],
       child: MaterialApp(
         // home: Tabs(),

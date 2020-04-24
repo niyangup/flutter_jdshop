@@ -20,7 +20,6 @@ class _OrderPageState extends State<OrderPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     this._getListData();
   }
@@ -88,8 +87,7 @@ class _OrderPageState extends State<OrderPage> {
             child: ListView(
                 children: this._orderList.map((value) {
               return InkWell(
-                onTap: (){
-
+                onTap: () {
                   Navigator.pushNamed(context, '/orderinfo');
                 },
                 child: Card(
